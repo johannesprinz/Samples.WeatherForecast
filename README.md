@@ -26,3 +26,11 @@ At this stage I ony had the following requirements installed:
 - Docker - https://www.docker.com/products/docker-desktop
 
 So I used the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension to setup a dotnet core 5 development container to proceed to using the `dotnet` cli to complete the initial steps. I did not want to polute my global scope with the dotnet sdk and other dependencies.
+
+To complete the `Initial project creation` and `GitIgnore` steps
+
+```zsh
+mkdir src
+cd src/
+dotnet new webapi -n Samples.WeatherForecast.Api
+```
