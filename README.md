@@ -34,3 +34,13 @@ mkdir src
 cd src/
 dotnet new webapi -n Samples.WeatherForecast.Api
 ```
+
+When adding the docker file I just had to move it into the root and add the `--no-restore` flag to get the docker build command to run.
+
+Lets build, run and test it.
+
+```zsh
+docker build -t samples-weatherforecast:latest .
+docker run -it --rm -p 8080:80 samples-weatherforecast:latest
+curl http://localhost:8080/weatherforcast
+```
