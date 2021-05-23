@@ -1,21 +1,28 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+ARG VERSION=5.0-alpine
+
+FROM mcr.microsoft.com/dotnet/sdk:${VERSION} AS build
 WORKDIR /app
-EXPOSE 80
 
-ENV ASPNETCORE_URLS=http://+:80
-
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
-COPY ["src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj", "src/Samples.WeatherForecast.Api/"]
-RUN dotnet restore "src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj"
+# Copy and restore as distinct layers
 COPY . .
-WORKDIR "/src/src/Samples.WeatherForecast.Api"
-RUN dotnet build "Samples.WeatherForecast.Api.csproj" -c Release -o /app/build --no-restore
+WORKDIR /app/src/Samples.WeatherForecast.Api
+RUN dotnet restore Samples.WeatherForecast.Api.csproj -r linux-musl-x64
 
 FROM build AS publish
-RUN dotnet publish "Samples.WeatherForecast.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish \
+    -c Release \
+    -o /app/out \
+    -r linux-musl-x64 \
+    --self-contained=true \
+    --no-restore \
+    -p:PublishReadyToRun=true \
+    -p:PublishTrimmed=true
 
-FROM base AS final
+# Final stage/image
+FROM mcr.microsoft.com/dotnet/runtime-deps:${VERSION}
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Samples.WeatherForecast.Api.dll"]
+COPY --from=publish /app/out .
+
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["./Samples.WeatherForecast.Api"]

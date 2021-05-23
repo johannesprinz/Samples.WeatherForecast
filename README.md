@@ -40,7 +40,14 @@ When adding the docker file I just had to move it into the root and add the `--n
 Lets build, run and test it.
 
 ```zsh
-docker build -t samples-weatherforecast:latest .
+docker build -t samples.weatherforecast:latest .
 docker run -it --rm -p 8080:80 samples-weatherforecast:latest
-curl http://localhost:8080/weatherforcast
+curl http://localhost:8080/weatherforecast/
+```
+
+Optimised the docker file
+```
+docker build -t samples-weatherforecast:v2 .
+docker images ls
+docker run -it --rm -p 8080:8080 samples-weatherforecast:v2
 ```
