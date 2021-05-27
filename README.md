@@ -51,3 +51,16 @@ docker build -t samples-weatherforecast:v2 .
 docker images ls
 docker run -it --rm -p 8080:8080 samples-weatherforecast:v2
 ```
+
+Completing [Part 3 building a pipeline](https://dev.to/newday-technology/api-s-from-dev-to-production-part-3-7dn) there where a few challenges to [setup container support](https://docs.github.com/en/packages/working-with-a-github-packages-registry/enabling-improved-container-support-with-the-container-registry) in github since it is still in preview. Also had to change it to public, but could only access the packages from the root of my profile view.
+
+... and now to test
+
+```zsh
+docker pull ghcr.io/johannesprinz/samples-weatherforecast:6af1d39c83dc5c31688148cb68ca51d44993e30f 
+docker run -it --rm -p 8080:8080 ghcr.io/johannesprinz/samples-weatherforecast:6af1d39c83dc5c31688148cb68ca51d44993e30f 
+```
+
+```zsh
+curl http://localhost:8080/weatherforecast/
+```
