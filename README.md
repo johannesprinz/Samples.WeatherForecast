@@ -64,3 +64,5 @@ docker run -it --rm -p 8080:8080 ghcr.io/johannesprinz/samples-weatherforecast:6
 ```zsh
 curl http://localhost:8080/weatherforecast/
 ```
+
+[Part 4 Scanning the container](https://dev.to/newday-technology/api-s-from-dev-to-production-part-4-49g8)
