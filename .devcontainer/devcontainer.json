@@ -23,7 +23,8 @@
 	"extensions": [
 		"ms-dotnettools.csharp",
 		"ms-azuretools.vscode-docker",
-		"piotrpalarz.vscode-gitignore-generator"
+		"piotrpalarz.vscode-gitignore-generator",
+		"formulahendry.dotnet-test-explorer"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
