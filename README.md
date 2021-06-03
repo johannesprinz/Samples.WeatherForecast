@@ -93,4 +93,12 @@ chmod +x ./filename.sh
 
 to make the scripts executable.
 
+I also chose to add a `sln` file to make testing locally from the dev environment terminal and using the [test explorer plugin](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer) simpler.
+
+```zsh
+dotnet new sln
+dotnet sln add src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj
+dotnet sln add test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast.Api.UnitTest.csproj 
+```
+
 ### Step 7 Code coverage checks

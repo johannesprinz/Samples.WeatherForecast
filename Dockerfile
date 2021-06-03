@@ -38,7 +38,9 @@ ENTRYPOINT dotnet test \
     --runtime linux-musl-x64 \
     --no-restore \
     --no-build \
-    --logger "trx;LogFileName=test_results_unit_test.trx"
+    --logger "trx;LogFileName=test_results_unit_test.trx" \
+    --collect:"XPlat Code Coverage" \
+    -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover
 
 FROM build AS publish
 RUN dotnet publish \
