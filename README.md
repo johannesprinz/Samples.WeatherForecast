@@ -4,6 +4,7 @@ Following the tutorial set out by Peter King in [API's From Dev to Production](h
 
 ## How I got here
 
+### Step 0 Setting up the development environment
 ```zsh
 mkdir Samples.WeatherForecast
 cd Samples.WeatherForecast
@@ -27,6 +28,8 @@ At this stage I ony had the following requirements installed:
 
 So I used the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension to setup a dotnet core 5 development container to proceed to using the `dotnet` cli to complete the initial steps. I did not want to polute my global scope with the dotnet sdk and other dependencies.
 
+### Step 2 Setting up solution and default container
+
 To complete the `Initial project creation` and `GitIgnore` steps
 
 ```zsh
@@ -45,7 +48,8 @@ docker run -it --rm -p 8080:80 samples-weatherforecast:latest
 curl http://localhost:8080/weatherforecast/
 ```
 
-Optimised the docker file
+### Step 3 Optimised the docker file
+
 ```
 docker build -t samples-weatherforecast:v2 .
 docker images ls
@@ -65,4 +69,28 @@ docker run -it --rm -p 8080:8080 ghcr.io/johannesprinz/samples-weatherforecast:6
 curl http://localhost:8080/weatherforecast/
 ```
 
+### Step 4 Container scanning
+
+Todo: https://docs.docker.com/engine/security/trust/
+
 [Part 4 Scanning the container](https://dev.to/newday-technology/api-s-from-dev-to-production-part-4-49g8)
+
+### Step 5 Health checks
+
+[Adding health checks](https://dev.to/newday-technology/api-s-from-dev-to-production-part-5-26cp)
+
+### Step 6 Unit testing
+
+Since I'm working on a mac I could use `powershell core` or the `pwsh` terminal in my development environment, but that would have required me figuring out how to run docker commands from inside a docker container. 
+
+>This is possible btw.
+
+Instead I tried my hand at shell scripting. Only catcha was running
+
+```zsh
+chmod +x ./filename.sh
+```
+
+to make the scripts executable.
+
+### Step 7 Code coverage checks
