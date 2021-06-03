@@ -10,6 +10,7 @@ on:
 
 env:
   image-name: ghcr.io/johannesprinz/samples-weatherforecast:${{ github.sha }}
+  image-name-unit-tests: unit-tests:latest
 
 jobs:
   build:
@@ -17,6 +18,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Unit tests [build]
+        run: docker build --target unit-test -t ${{ env.image-name-unit-tests }} .
+
+      - name: Unit tests [run]
+        run: docker run --rm -v ${{ github.workspace }}/path/to/artifacts/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
+
+      - name: Unit tests [results]  
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: unit-test-results
+          path: ${{ github.workspace }}/path/to/artifacts/testresults/test_results_unit_test.trx
+
+      - name: Unit tests [publish]
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Unit tests
+          path: ${{ github.workspace }}/path/to/artifacts/testresults/test_results_unit_test.trx
+          reporter: dotnet-trx
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build docker image
         run: docker build . -t ${{ env.image-name }}
