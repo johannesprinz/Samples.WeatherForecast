@@ -20,13 +20,13 @@ COPY . .
 # Build
 RUN dotnet build \
     "src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj" \
-    -c Release \
+    --configuration Release \
     --runtime linux-musl-x64 \
     --no-restore    
 
 RUN dotnet build \
     "test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast.Api.UnitTest.csproj" \
-    -c Release \
+    --configuration Release \
     -r linux-musl-x64 \
     --no-restore    
 
@@ -40,7 +40,8 @@ ENTRYPOINT dotnet test \
     --no-build \
     --logger "trx;LogFileName=test_results_unit_test.trx" \
     --collect:"XPlat Code Coverage" \
-    -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover
+    -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover \
+    --results-directory /code/test/Samples.WeatherForecast.Api.UnitTest/TestResults
 
 FROM build AS publish
 RUN dotnet publish \

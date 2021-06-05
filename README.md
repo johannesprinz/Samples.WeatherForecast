@@ -102,3 +102,5 @@ dotnet sln add test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast
 ```
 
 ### Step 7 Code coverage checks
+
+[![codecov](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graph/badge.svg?token=U3SOUFLSRW)](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast)

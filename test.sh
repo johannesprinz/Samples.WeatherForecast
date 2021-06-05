@@ -6,4 +6,4 @@ echo "Unit tests [build]"
 docker build --target unit-test -t $IMAGE_NAME_AND_TAG .
 
 echo "Unit tests [run]"
-docker run --rm -v "${pwd}\TestResults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults/" $IMAGE_NAME_AND_TAG
+docker run --rm -v "${PWD}/TestResults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults/" $IMAGE_NAME_AND_TAG

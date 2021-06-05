@@ -23,7 +23,7 @@ jobs:
         run: docker build --target unit-test -t ${{ env.image-name-unit-tests }} .
 
       - name: Unit tests [run]
-        run: docker run --rm -v ${{ github.workspace }}/path/to/artifacts/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
+        run: docker run --rm --volume ${{ github.workspace }}/path/to/artifacts/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
 
       - name: Unit tests [results]  
         uses: actions/upload-artifact@v2
@@ -41,10 +41,13 @@ jobs:
           reporter: dotnet-trx
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Where are the results
+        run: ls -R
+
       - name: Code coverage [codecov]
         uses: codecov/codecov-action@v1.2.1
         with:
-          files: ${{ github.workspace }}/path/to/artifacts/testresults/coverage.info
+          files: ${{ github.workspace }}/path/to/artifacts/testresults/*/coverage.info
           verbose: true
 
       - name: Build docker image
