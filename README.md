@@ -103,4 +103,29 @@ dotnet sln add test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast
 
 ### Step 7 Code coverage checks
 
+[Codecove docs](https://docs.codecov.io/docs)
+
 [![codecov](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graph/badge.svg?token=U3SOUFLSRW)](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast)
+
+[Codecov.io Samples.WeatherForecast](https://app.codecov.io/gh/johannesprinz/Samples.WeatherForecast)
+
+![Sunburst](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graphs/sunburst.svg)
+![Icicle](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graphs/icicle.svg)
+![Grid](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graphs/tree.svg)
+![Commits Graph](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graphs/commits.svg)
+
+Managed to get the coverage without havving to add an extra coverlet package. You can see this in the dotnet test cmd in the docker file.
+
+```docker
+ENTRYPOINT dotnet test \
+    # ...
+    --collect:"XPlat Code Coverage" \
+    -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=json,cobertura,lcov,teamcity,opencover \
+    --results-directory /code/test/Samples.WeatherForecast.Api.UnitTest/TestResults
+```
+
+### Step 8
+
+### Step 9
+
+### Step 10
