@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/runtime-deps:${VERSION} AS base
 WORKDIR /app
 EXPOSE 8080
 HEALTHCHECK --interval=60s --timeout=3s --retries=3 \
-    CMD wget localhost:8080/health -q -O - > /dev/null 2>&1
+    CMD wget localhost:8080/health --quiet --output-document - > /dev/null 2>&1
 
 FROM mcr.microsoft.com/dotnet/sdk:${VERSION} AS build
 WORKDIR /code
@@ -13,8 +13,12 @@ WORKDIR /code
 COPY ["src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj", "src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj"]
 COPY ["test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast.Api.UnitTest.csproj", "test/Samples.WeatherForecast.Api.UnitTest/"]
 
-RUN dotnet restore "src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj" -r linux-musl-x64
-RUN dotnet restore "test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast.Api.UnitTest.csproj" -r linux-musl-x64
+RUN dotnet restore \
+    "src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj" \
+    --runtime linux-musl-x64
+RUN dotnet restore \
+    "test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast.Api.UnitTest.csproj" \
+    --runtime linux-musl-x64
 COPY . .
 
 # Build
@@ -27,14 +31,14 @@ RUN dotnet build \
 RUN dotnet build \
     "test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast.Api.UnitTest.csproj" \
     --configuration Release \
-    -r linux-musl-x64 \
+    --runtime linux-musl-x64 \
     --no-restore    
 
 # Unit test runner
 FROM build AS unit-test
 WORKDIR /code/test/Samples.WeatherForecast.Api.UnitTest
 ENTRYPOINT dotnet test \
-    -c Release \
+    --configuration Release \
     --runtime linux-musl-x64 \
     --no-restore \
     --no-build \
@@ -46,20 +50,20 @@ ENTRYPOINT dotnet test \
 FROM build AS publish
 RUN dotnet publish \
     "src/Samples.WeatherForecast.Api/Samples.WeatherForecast.Api.csproj" \
-    -c Release \
-    -o /app/publish \
+    --configuration Release \
+    --output /app/publish \
     --runtime linux-musl-x64 \
     --self-contained=true \
-    -- no-restore \
-    -- no-build \
+    --no-restore \
+    --no-build \
     -p:PublishReadyToRun=true \
     -p:PublishTrimmed=true
 
 # Final stage/image
 FROM base AS final
 
-RUN addgroup -S dotnetgroup && \
-    adduser -S dotnet
+RUN addgroup --system dotnetgroup && \
+    adduser --system dotnet
 USER dotnet
 
 WORKDIR /app
