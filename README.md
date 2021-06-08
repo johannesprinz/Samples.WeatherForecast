@@ -124,8 +124,12 @@ ENTRYPOINT dotnet test \
     --results-directory /code/test/Samples.WeatherForecast.Api.UnitTest/TestResults
 ```
 
-### Step 8
+### Step 8 Branch protection
 
-### Step 9
+### Step 9 Code Quality
+
+Using [Codeclimate](https://codeclimate.com/welcome).
+
+
 
 ### Step 10
