@@ -17,7 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
       - name: Unit tests [build]
         run: docker build --target unit-test -t ${{ env.image-name-unit-tests }} .
