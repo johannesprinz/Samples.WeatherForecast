@@ -105,6 +105,7 @@ dotnet sln add test/Samples.WeatherForecast.Api.UnitTest/Samples.WeatherForecast
 
 [Codecove docs](https://docs.codecov.io/docs)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2b524a7d3ca64d429aae1144e59b68e2)](https://app.codacy.com/gh/johannesprinz/Samples.WeatherForecast?utm_source=github.com&utm_medium=referral&utm_content=johannesprinz/Samples.WeatherForecast&utm_campaign=Badge_Grade_Settings)
 [![codecov](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graph/badge.svg?token=U3SOUFLSRW)](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast)
 
 [Codecov.io Samples.WeatherForecast](https://app.codecov.io/gh/johannesprinz/Samples.WeatherForecast)
