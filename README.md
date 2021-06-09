@@ -1,5 +1,25 @@
 # Samples.WeatherForecast
 
+[![codecov](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast/branch/main/graph/badge.svg?token=U3SOUFLSRW)](https://codecov.io/gh/johannesprinz/Samples.WeatherForecast)
+
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2b524a7d3ca64d429aae1144e59b68e2)](https://app.codacy.com/gh/johannesprinz/Samples.WeatherForecast?utm_source=github.com&utm_medium=referral&utm_content=johannesprinz/Samples.WeatherForecast&utm_campaign=Badge_Grade_Settings)
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=alert_status)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=bugs)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=code_smells)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=coverage)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=ncloc)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=security_rating)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=sqale_index)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=johannesprinz_Samples.WeatherForecast&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=johannesprinz_Samples.WeatherForecast)
+
+
 Following the tutorial set out by Peter King in [API's From Dev to Production](https://dev.to/newday-technology/api-s-from-dev-to-production-428i). But I'm doing on an 🍏 Mac.
 
 ## How I got here
