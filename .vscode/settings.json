@@ -1,0 +1,27 @@
+{
+    "cSpell.words": [
+        "Autobuild",
+        "Codacy",
+        "Codeclimate",
+        "Codecove",
+        "ENTRYPOINT",
+        "SAST",
+        "analyzed",
+        "chmod",
+        "cobertura",
+        "codecov",
+        "codeql",
+        "dorny",
+        "ghcr",
+        "johannesprinz",
+        "lcov",
+        "mkdir",
+        "opencover",
+        "pwsh",
+        "sonarscanner",
+        "teamcity",
+        "testresults",
+        "weatherforecast",
+        "webapi"
+    ]
+}
