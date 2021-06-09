@@ -130,6 +130,9 @@ ENTRYPOINT dotnet test \
 
 Using [Codeclimate](https://codeclimate.com/welcome).
 
+### Step 10 SAST 
 
+- **S**tatic **A**pplication **S**ecurity **t**esting is used to secure software by reviewing the source code of the software to identify sources of vulnerabilities.
 
-### Step 10
+- https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#running-additional-queries
+- https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html
